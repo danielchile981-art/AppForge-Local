@@ -10,16 +10,16 @@
   <main class="shell">
     <section class="hero">
       <div>
-        <p class="eyebrow">GERADOR DE APPS</p>
+        <p class="eyebrow">GERADOR DE APPS FUNCIONAIS</p>
         <h1>AppForge Local</h1>
-        <p class="subtitle">Descreva um aplicativo. O AppForge cria um projeto Android baseado em Capacitor, envia ao GitHub e prepara o build do APK.</p>
+        <p class="subtitle">Descreva um aplicativo. O AppForge gera código funcional, envia ao GitHub e prepara o build do APK.</p>
       </div>
-      <div class="badge">MVP 1.1</div>
+      <div class="badge">2.0</div>
     </section>
 
     <section class="panel">
       <h2>1. Conectar GitHub</h2>
-      <p class="muted">Agora o AppForge usa o login oficial por código de dispositivo. Você não precisa colar senha nem token pessoal.</p>
+      <p class="muted">Login oficial por código de dispositivo. Você não precisa colar senha nem token pessoal.</p>
       <label>Client ID do AppForge no GitHub</label>
       <div class="row"><input id="githubClientId" autocomplete="off" placeholder="Ex.: Iv1.abc123..." /><button class="secondary" id="saveClientId">Salvar</button></div>
       <button class="primary" id="connectGithubBtn">CONECTAR COM GITHUB</button>
@@ -35,14 +35,14 @@
 
     <section class="panel">
       <h2>2. Descrever o aplicativo</h2>
-      <textarea id="prompt" rows="8" placeholder="Ex.: Crie um aplicativo chamado Lista Fácil para cadastrar tarefas, marcar como concluídas, pesquisar, usar modo escuro e salvar tudo no celular."></textarea>
+      <textarea id="prompt" rows="8" placeholder="Ex.: Crie um aplicativo chamado ImageForge AI para gerar imagens por prompt e editar fotos escolhidas da galeria com instruções em português."></textarea>
       <div class="grid2"><div><label>Nome do app</label><input id="appName" placeholder="Gerado automaticamente se vazio" /></div><div><label>ID Android</label><input id="appId" placeholder="com.appforge.meuapp" /></div></div>
-      <button class="primary" id="generateBtn">GERAR PROJETO</button>
+      <button class="primary" id="generateBtn">GERAR PROJETO FUNCIONAL</button>
     </section>
 
     <section class="panel hidden" id="previewPanel"><h2>3. Projeto gerado</h2><div id="projectSummary" class="summary"></div><div class="row wrap"><button class="primary" id="publishBtn">CRIAR NO GITHUB E COMPILAR</button><button class="secondary" id="downloadJsonBtn">VER ARQUIVOS GERADOS</button></div></section>
     <section class="panel"><h2>Status</h2><pre id="status">Pronto.</pre></section>
-    <footer><p>O AppForge guarda apenas o Client ID e a sessão OAuth deste aparelho. Nunca informe sua senha do GitHub dentro do aplicativo.</p></footer>
+    <footer><p>O AppForge 2.0 gera funções reais para tipos suportados. Para IA de imagens, o app gerado usa Puter.js e pode pedir autorização do usuário na primeira geração.</p></footer>
   </main>
   <script src="app.js"></script>
 </body>
