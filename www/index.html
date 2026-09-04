@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AppForge Local</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">GERADOR DE APPS</p>
+        <h1>AppForge Local</h1>
+        <p class="subtitle">Descreva um aplicativo. O AppForge cria um projeto Android baseado em Capacitor, envia ao GitHub e prepara o build do APK.</p>
+      </div>
+      <div class="badge">MVP 1.0</div>
+    </section>
+
+    <section class="panel">
+      <h2>1. Conectar GitHub</h2>
+      <p class="muted">Para o primeiro teste, use um token refinado com acesso ao repositório. Não coloque sua senha do GitHub aqui.</p>
+      <label>Usuário do GitHub</label>
+      <input id="githubUser" autocomplete="off" placeholder="ex.: danielchile981-art" />
+      <label>Token refinado</label>
+      <div class="row"><input id="githubToken" type="password" autocomplete="off" placeholder="github_pat_..." /><button class="secondary" id="saveToken">Salvar localmente</button></div>
+      <label>Visibilidade do repositório</label>
+      <select id="repoVisibility"><option value="false">Público</option><option value="true">Privado</option></select>
+    </section>
+
+    <section class="panel">
+      <h2>2. Descrever o aplicativo</h2>
+      <textarea id="prompt" rows="8" placeholder="Ex.: Crie um aplicativo chamado Lista Fácil para cadastrar tarefas, marcar como concluídas, pesquisar, usar modo escuro e salvar tudo no celular."></textarea>
+      <div class="grid2"><div><label>Nome do app</label><input id="appName" placeholder="Gerado automaticamente se vazio" /></div><div><label>ID Android</label><input id="appId" placeholder="com.appforge.meuapp" /></div></div>
+      <button class="primary" id="generateBtn">GERAR PROJETO</button>
+    </section>
+
+    <section class="panel hidden" id="previewPanel"><h2>3. Projeto gerado</h2><div id="projectSummary" class="summary"></div><div class="row wrap"><button class="primary" id="publishBtn">CRIAR NO GITHUB E COMPILAR</button><button class="secondary" id="downloadJsonBtn">VER ARQUIVOS GERADOS</button></div></section>
+    <section class="panel"><h2>Status</h2><pre id="status">Pronto.</pre></section>
+    <footer><p>O token fica apenas no armazenamento local deste aparelho. Para uso real, prefira OAuth/Device Flow e armazenamento seguro do Android.</p></footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
