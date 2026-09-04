@@ -14,16 +14,21 @@
         <h1>AppForge Local</h1>
         <p class="subtitle">Descreva um aplicativo. O AppForge cria um projeto Android baseado em Capacitor, envia ao GitHub e prepara o build do APK.</p>
       </div>
-      <div class="badge">MVP 1.0</div>
+      <div class="badge">MVP 1.1</div>
     </section>
 
     <section class="panel">
       <h2>1. Conectar GitHub</h2>
-      <p class="muted">Para o primeiro teste, use um token refinado com acesso ao repositório. Não coloque sua senha do GitHub aqui.</p>
-      <label>Usuário do GitHub</label>
-      <input id="githubUser" autocomplete="off" placeholder="ex.: danielchile981-art" />
-      <label>Token refinado</label>
-      <div class="row"><input id="githubToken" type="password" autocomplete="off" placeholder="github_pat_..." /><button class="secondary" id="saveToken">Salvar localmente</button></div>
+      <p class="muted">Agora o AppForge usa o login oficial por código de dispositivo. Você não precisa colar senha nem token pessoal.</p>
+      <label>Client ID do AppForge no GitHub</label>
+      <div class="row"><input id="githubClientId" autocomplete="off" placeholder="Ex.: Iv1.abc123..." /><button class="secondary" id="saveClientId">Salvar</button></div>
+      <button class="primary" id="connectGithubBtn">CONECTAR COM GITHUB</button>
+      <div id="devicePanel" class="summary hidden">
+        <strong>Código de autorização:</strong><br>
+        <span id="deviceCode" style="font-size:1.4rem;font-weight:800;letter-spacing:.08em"></span><br><br>
+        <button class="secondary" id="openGithubDeviceBtn">ABRIR GITHUB PARA AUTORIZAR</button>
+      </div>
+      <p id="githubAccount" class="muted">GitHub ainda não conectado.</p>
       <label>Visibilidade do repositório</label>
       <select id="repoVisibility"><option value="false">Público</option><option value="true">Privado</option></select>
     </section>
@@ -37,7 +42,7 @@
 
     <section class="panel hidden" id="previewPanel"><h2>3. Projeto gerado</h2><div id="projectSummary" class="summary"></div><div class="row wrap"><button class="primary" id="publishBtn">CRIAR NO GITHUB E COMPILAR</button><button class="secondary" id="downloadJsonBtn">VER ARQUIVOS GERADOS</button></div></section>
     <section class="panel"><h2>Status</h2><pre id="status">Pronto.</pre></section>
-    <footer><p>O token fica apenas no armazenamento local deste aparelho. Para uso real, prefira OAuth/Device Flow e armazenamento seguro do Android.</p></footer>
+    <footer><p>O AppForge guarda apenas o Client ID e a sessão OAuth deste aparelho. Nunca informe sua senha do GitHub dentro do aplicativo.</p></footer>
   </main>
   <script src="app.js"></script>
 </body>
