@@ -1,8 +1,0 @@
-{
-  "appId": "com.appforge.local",
-  "appName": "AppForge Local",
-  "webDir": "www",
-  "server": {
-    "androidScheme": "https"
-  }
-}
