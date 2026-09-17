@@ -25,8 +25,9 @@ jobs:
 
       - name: Instalar plataforma Android
         run: |
-          yes | sdkmanager --licenses >/dev/null || true
-          sdkmanager "platforms;android-35" "build-tools;35.0.0"
+          SDK_MANAGER_PATH=$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager | sort -V | tail -n 1)
+          yes | "$SDK_MANAGER_PATH" --licenses >/dev/null || true
+          "$SDK_MANAGER_PATH" "platforms;android-35" "build-tools;35.0.0"
 
       - name: Configurar Gradle
         uses: gradle/actions/setup-gradle@v4
