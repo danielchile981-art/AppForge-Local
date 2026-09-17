@@ -38,7 +38,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.animation.ObjectAnimator;
-import android.animation.Animator;
+import android.animation.ValueAnimator;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -633,7 +633,7 @@ public class CameraActivity extends Activity {
         stopRecordPulse();
         recordPulse = ObjectAnimator.ofFloat(recordButton, View.ALPHA, 1f, .58f, 1f);
         recordPulse.setDuration(1050);
-        recordPulse.setRepeatCount(Animator.INFINITE);
+        recordPulse.setRepeatCount(ValueAnimator.INFINITE);
         recordPulse.start();
     }
 
