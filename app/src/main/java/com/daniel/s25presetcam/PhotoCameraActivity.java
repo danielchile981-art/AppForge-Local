@@ -18,7 +18,6 @@ import android.hardware.camera2.CameraDevice;
 import android.hardware.camera2.CameraManager;
 import android.hardware.camera2.CaptureRequest;
 import android.hardware.camera2.TotalCaptureResult;
-import android.hardware.camera2.params.RggbChannelVector;
 import android.hardware.camera2.params.StreamConfigurationMap;
 import android.media.Image;
 import android.media.ImageReader;
@@ -345,13 +344,7 @@ public class PhotoCameraActivity extends Activity {
             applyExposureCompensation(builder);
         }
 
-        if (preset.whiteBalanceKelvin != null) {
-            builder.set(CaptureRequest.CONTROL_AWB_MODE, CaptureRequest.CONTROL_AWB_MODE_OFF);
-            builder.set(CaptureRequest.COLOR_CORRECTION_MODE, CaptureRequest.COLOR_CORRECTION_MODE_FAST);
-            builder.set(CaptureRequest.COLOR_CORRECTION_GAINS, kelvinToGains(preset.whiteBalanceKelvin));
-        } else {
-            builder.set(CaptureRequest.CONTROL_AWB_MODE, CaptureRequest.CONTROL_AWB_MODE_AUTO);
-        }
+        applyCalibratedWhiteBalance(builder);
     }
 
     private void applyExposureCompensation(CaptureRequest.Builder builder) {
@@ -540,25 +533,22 @@ public class PhotoCameraActivity extends Activity {
         });
     }
 
-    private RggbChannelVector kelvinToGains(int kelvin) {
-        double temp = kelvin / 100.0;
-        double red;
-        double green;
-        double blue;
-        if (temp <= 66) {
-            red = 255;
-            green = 99.4708025861 * Math.log(temp) - 161.1195681661;
-            blue = temp <= 19 ? 0 : 138.5177312231 * Math.log(temp - 10) - 305.0447927307;
-        } else {
-            red = 329.698727446 * Math.pow(temp - 60, -0.1332047592);
-            green = 288.1221695283 * Math.pow(temp - 60, -0.0755148492);
-            blue = 255;
+    private void applyCalibratedWhiteBalance(CaptureRequest.Builder builder) {
+        if (preset.whiteBalanceKelvin == null) {
+            builder.set(CaptureRequest.CONTROL_AWB_MODE, CaptureRequest.CONTROL_AWB_MODE_AUTO);
+            return;
         }
-        red = clamp(red, 1, 255);
-        green = clamp(green, 1, 255);
-        blue = clamp(blue, 1, 255);
-        float g = (float) (green / 255.0);
-        return new RggbChannelVector((float) (red / 255.0 / g), 1f, 1f, (float) (blue / 255.0 / g));
+        int kelvin = preset.whiteBalanceKelvin;
+        int requestedMode;
+        if (kelvin <= 3200) requestedMode = CaptureRequest.CONTROL_AWB_MODE_INCANDESCENT;
+        else if (kelvin <= 3900) requestedMode = CaptureRequest.CONTROL_AWB_MODE_WARM_FLUORESCENT;
+        else if (kelvin <= 4600) requestedMode = CaptureRequest.CONTROL_AWB_MODE_FLUORESCENT;
+        else if (kelvin <= 5600) requestedMode = CaptureRequest.CONTROL_AWB_MODE_DAYLIGHT;
+        else requestedMode = CaptureRequest.CONTROL_AWB_MODE_CLOUDY_DAYLIGHT;
+
+        int[] available = characteristics.get(CameraCharacteristics.CONTROL_AWB_AVAILABLE_MODES);
+        builder.set(CaptureRequest.CONTROL_AWB_MODE,
+                contains(available, requestedMode) ? requestedMode : CaptureRequest.CONTROL_AWB_MODE_AUTO);
     }
 
     private TextView text(String value, float sp, int color, boolean bold) {
@@ -586,4 +576,10 @@ public class PhotoCameraActivity extends Activity {
     private static long clamp(long value, long min, long max) { return Math.max(min, Math.min(max, value)); }
     private static float clamp(float value, float min, float max) { return Math.max(min, Math.min(max, value)); }
     private static double clamp(double value, double min, double max) { return Math.max(min, Math.min(max, value)); }
+
+    private static boolean contains(int[] values, int target) {
+        if (values == null) return false;
+        for (int value : values) if (value == target) return true;
+        return false;
+    }
 }

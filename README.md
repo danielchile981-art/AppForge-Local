@@ -9,6 +9,7 @@ O app inclui ícone próprio, capa de abertura animada, abas de Fotos e Vídeos,
 - Câmera padrão: dia a dia, paisagem ampla, retrato, assunto distante e selfie
 - Foto Pro: RAW coringa, movimento, paisagem 50 MP, noite à mão, noite com tripé, Lua e astrofotografia
 - A resolução, a lente e os controles manuais são ajustados para a opção compatível mais próxima exposta pela API Camera2
+- O balanço de branco usa os modos calibrados pelo firmware do sensor para evitar dominantes verdes
 - As fotos são salvas em `Galeria > Pictures > S25 Preset Cam`
 
 ## Presets incluídos
@@ -40,7 +41,7 @@ As gravações ficam em `Galeria > Movies > S25 Preset Cam`.
 
 ## APK
 
-Depois que o build terminar, baixe `release/S25-Preset-Cam-v1.1.apk`. O mesmo arquivo também fica disponível na aba **Actions**, no artefato `S25-Preset-Cam-APK`.
+Depois que o build terminar, baixe `release/S25-Preset-Cam-v1.1.1.apk`. O mesmo arquivo também fica disponível na aba **Actions**, no artefato `S25-Preset-Cam-APK`.
 
 ## Compilação
 

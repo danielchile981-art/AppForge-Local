@@ -38,21 +38,21 @@ jobs:
         run: gradle :app:assembleDebug --stacktrace
 
       - name: Renomear APK
-        run: cp app/build/outputs/apk/debug/app-debug.apk S25-Preset-Cam-v1.1.apk
+        run: cp app/build/outputs/apk/debug/app-debug.apk S25-Preset-Cam-v1.1.1.apk
 
       - name: Publicar APK
         uses: actions/upload-artifact@v4
         with:
           name: S25-Preset-Cam-APK
-          path: S25-Preset-Cam-v1.1.apk
+          path: S25-Preset-Cam-v1.1.1.apk
           if-no-files-found: error
 
       - name: Disponibilizar APK na branch
         run: |
           mkdir -p release
-          cp S25-Preset-Cam-v1.1.apk release/S25-Preset-Cam-v1.1.apk
+          cp S25-Preset-Cam-v1.1.1.apk release/S25-Preset-Cam-v1.1.1.apk
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add release/S25-Preset-Cam-v1.1.apk
-          git commit -m "Adicionar APK v1.1 com fotos e vídeos [skip ci]"
+          git add release/S25-Preset-Cam-v1.1.1.apk
+          git commit -m "Adicionar APK v1.1.1 com correção de cores [skip ci]"
           git push
