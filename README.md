@@ -1,8 +1,15 @@
 # S25 Preset Cam
 
-Aplicativo Android gratuito com câmera própria e presets de vídeo criados para o Galaxy S25 Ultra.
+Aplicativo Android gratuito com câmera própria e presets de fotos e vídeos criados para o Galaxy S25 Ultra.
 
-O app inclui ícone próprio, capa de abertura animada, entrada suave dos presets e animação visual durante a gravação.
+O app inclui ícone próprio, capa de abertura animada, abas de Fotos e Vídeos, entrada suave dos presets e animações de captura e gravação.
+
+## Presets de foto
+
+- Câmera padrão: dia a dia, paisagem ampla, retrato, assunto distante e selfie
+- Foto Pro: RAW coringa, movimento, paisagem 50 MP, noite à mão, noite com tripé, Lua e astrofotografia
+- A resolução, a lente e os controles manuais são ajustados para a opção compatível mais próxima exposta pela API Camera2
+- As fotos são salvas em `Galeria > Pictures > S25 Preset Cam`
 
 ## Presets incluídos
 
@@ -26,14 +33,14 @@ As gravações ficam em `Galeria > Movies > S25 Preset Cam`.
 
 ## Limitações
 
-- Não utiliza o processamento proprietário do aplicativo Câmera Samsung.
+- Não utiliza o processamento proprietário dos aplicativos Câmera Samsung e Expert RAW.
 - A troca entre sensores físicos depende do que o firmware disponibiliza à API Camera2.
 - Samsung Log, Vídeo Retrato, Superestável e Hyperlapse continuam exclusivos do aplicativo Samsung.
 - A primeira versão precisa ser testada no aparelho real para validar todas as combinações do S25 Ultra.
 
 ## APK
 
-Depois que o build terminar, baixe `release/S25-Preset-Cam-v1.0.apk`. O mesmo arquivo também fica disponível na aba **Actions**, no artefato `S25-Preset-Cam-APK`.
+Depois que o build terminar, baixe `release/S25-Preset-Cam-v1.1.apk`. O mesmo arquivo também fica disponível na aba **Actions**, no artefato `S25-Preset-Cam-APK`.
 
 ## Compilação
 

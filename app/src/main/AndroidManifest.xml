@@ -32,6 +32,13 @@
             android:exported="false" />
 
         <activity
+            android:name=".PhotoCameraActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.S25PresetCam.Camera"
+            android:exported="false" />
+
+        <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:exported="false" />
